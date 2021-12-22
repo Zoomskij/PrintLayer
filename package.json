@@ -1,0 +1,35 @@
+{
+  "name": "PrintLayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "node-sass": "^7.0.0",
+    "postcss-loader": "^6.2.1",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "scripts": {
+    "dev": "webpack",
+    "prod": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zoomskij/PrintLayer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zoomskij/PrintLayer/issues"
+  },
+  "homepage": "https://github.com/Zoomskij/PrintLayer#readme"
+}
