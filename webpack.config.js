@@ -4,6 +4,12 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
     devtool: 'source-map',
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            "~": path.resolve(__dirname, './src/')
+        }
+    },
     entry: "./wwwroot/src/js/app.js",
     output: {
         path: path.resolve(__dirname, "wwwroot/dist"),
