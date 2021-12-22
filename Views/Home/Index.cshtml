@@ -6,10 +6,19 @@
     <script src="~/dist/bundle.js"></script>
 }
 
+@section Styles {
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+}
+
 
 <div id="app">
-    <span>
-        {{message}}
-    </span>
+    <el-row>
+        <el-button>Default</el-button>
+    </el-row>
+    <el-date-picker
+        type="date"
+        placeholder="Pick a day">
+    </el-date-picker>
+
     <span>...</span>
 </div>
