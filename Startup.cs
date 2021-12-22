@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PrintLayer.Data;
 using PrintLayer.Models;
+using PrintLayer.Repositories;
+using PrintLayer.Repositories.Interfaces;
+using PrintLayer.Services;
+using PrintLayer.Services.Interfaces;
 
 namespace PrintLayer
 {
@@ -37,6 +41,13 @@ namespace PrintLayer
             services.AddControllersWithViews();
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<Context>();
+
+
+            services.AddScoped<DbContext>();
+            services.AddScoped<IAuthService, AuthService>();
+
+            services.AddScoped<IAuthRepository, AuthRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
