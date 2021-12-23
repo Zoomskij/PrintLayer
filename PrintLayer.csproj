@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\dist\" />
+    <Content Include="src\js\app.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="src\js\components\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>

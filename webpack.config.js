@@ -1,19 +1,26 @@
 ﻿const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     devtool: 'source-map',
+    entry: {
+        app_index: './src/js/app.js',
+        review_index: ['./src/js/Review/index.js'],
+    },
+    output: {
+        // The name under which the editor will be exported.
+        path: path.resolve(__dirname, 'wwwroot/dist'),
+        filename: '[name].js',
+        publicPath: '/'
+    },
     resolve: {
+        extensions: ['*', '.js', '.scss'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            "~": path.resolve(__dirname, './src/')
+            "~": path.resolve(__dirname, './src/js/')
         }
-    },
-    entry: "./wwwroot/src/js/app.js",
-    output: {
-        path: path.resolve(__dirname, "wwwroot/dist"),
-        filename: "bundle.js"
     },
     module: {
         rules: [
@@ -36,13 +43,28 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
+                test: /\.css$/,
+                exclude: [
+                    /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/
+                ],
+                use: [
+                    'vue-style-loader',
+                    'css-loader'
+                ]
+            },
         ]
     },
     plugins: [
         new MiniCssExtractPlugin({
             filename: "bundle.css"
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new VueLoaderPlugin()
     ]
 };

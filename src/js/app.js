@@ -64,38 +64,6 @@ function startOnLoad() {
                         self.user = error;
                         console.log(error);
                     });
-            },
-            addReview: function() {
-                var self = this;
-
-                var review = {
-                    grade: 4,
-                    description: 'This is a test description!'
-                }
-
-                this.$axios({
-                        method: 'post',
-                        url: '/review/add',
-                    data: review
-                    })
-                    .then(function (response) {
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-
-
-                //this.$axios.post('/review/add', review, {
-                //        headers: {
-                //        'Content-Type': 'multipart/form-data'
-                //        }})
-                //    .then(function (response) {
-                //        console.log(response);
-                //    })
-                //    .catch(function (error) {
-                //        console.log(error);
-                //    });
             }
         }
     });
