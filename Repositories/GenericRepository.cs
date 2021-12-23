@@ -12,10 +12,10 @@ namespace PrintLayer.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        private readonly DbContext _context;
+        private readonly Context _context;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(Context context)
         {
             _context = context;
             _dbSet = context.Set<T>();

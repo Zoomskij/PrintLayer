@@ -10,8 +10,8 @@ using PrintLayer.Data;
 namespace PrintLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211222125707_user-identity-server")]
-    partial class useridentityserver
+    [Migration("20211223075933_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,6 +172,37 @@ namespace PrintLayer.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("PrintLayer.Models.Review", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte>("Grade")
+                        .HasColumnType("tinyint");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("PrintLayer.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -286,6 +317,13 @@ namespace PrintLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PrintLayer.Models.Review", b =>
+                {
+                    b.HasOne("PrintLayer.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

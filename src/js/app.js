@@ -30,7 +30,28 @@ function startOnLoad() {
                     login: this.login,
                     password: this.password
                 }
-                this.$axios.post('/auth/login', model, {
+                this.$axios.post('/account/login', model, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(function (response) {
+                        self.user = response.data;
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        self.user = error;
+                        console.log(error);
+                    });
+            },
+            registration: function () {
+                //console.log(this.login);
+                var self = this;
+                var model = {
+                    login: this.login,
+                    password: this.password
+                }
+                this.$axios.post('/account/registration', model, {
                         headers: {
                             'Content-Type': 'application/json'
                         }

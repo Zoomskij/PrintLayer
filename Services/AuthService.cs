@@ -46,6 +46,11 @@ namespace PrintLayer.Services
             return user;
         }
 
+        public async Task<User> GetUserByLoginAsync(string login)
+        {
+            return await _authRepository.GetUserByLoginAsync(login);
+        }
+
         private static string GenerateHashPassword(ReadOnlySpan<char> password)
         {
             var bufferLength = Encoding.UTF8.GetByteCount(password);

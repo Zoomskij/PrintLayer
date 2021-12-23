@@ -10,5 +10,6 @@ namespace PrintLayer.Services.Interfaces
     {
         Task<User> LoginAsync(string login, string password);
         Task<User> CreateUserAsync(string login, string password);
+        Task<User> GetUserByLoginAsync(string login);
     }
 }

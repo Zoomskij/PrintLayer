@@ -12,7 +12,6 @@ namespace PrintLayer.Services
     public class CommonService<T> : ICommonService<T> where T : BaseEntity
     {
         private readonly IGenericRepository<T> _repository;
-
         public CommonService(IGenericRepository<T> repository)
         {
             _repository = repository;
