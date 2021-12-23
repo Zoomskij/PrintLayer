@@ -30,7 +30,7 @@ function startOnLoad() {
                     login: this.login,
                     password: this.password
                 }
-                this.$axios.post('/auth/login', model, {
+                this.$axios.post('/account/login', model, {
                         headers: {
                             'Content-Type': 'application/json'
                         }
@@ -43,6 +43,59 @@ function startOnLoad() {
                         self.user = error;
                         console.log(error);
                     });
+            },
+            registration: function () {
+                //console.log(this.login);
+                var self = this;
+                var model = {
+                    login: this.login,
+                    password: this.password
+                }
+                this.$axios.post('/account/registration', model, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(function (response) {
+                        self.user = response.data;
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        self.user = error;
+                        console.log(error);
+                    });
+            },
+            addReview: function() {
+                var self = this;
+
+                var review = {
+                    grade: 4,
+                    description: 'This is a test description!'
+                }
+
+                this.$axios({
+                        method: 'post',
+                        url: '/review/add',
+                    data: review
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+
+                //this.$axios.post('/review/add', review, {
+                //        headers: {
+                //        'Content-Type': 'multipart/form-data'
+                //        }})
+                //    .then(function (response) {
+                //        console.log(response);
+                //    })
+                //    .catch(function (error) {
+                //        console.log(error);
+                //    });
             }
         }
     });
