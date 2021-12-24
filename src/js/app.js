@@ -64,6 +64,20 @@ function startOnLoad() {
                         self.user = error;
                         console.log(error);
                     });
+            },
+            getOrders: function () {
+                var self = this;
+                this.$axios.get('/order',{
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             }
         }
     });
