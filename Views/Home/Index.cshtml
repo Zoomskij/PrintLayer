@@ -17,10 +17,10 @@
             <print-layer-header></print-layer-header>
         </el-header>
         <el-main>
-            <el-row>
-                <el-button v-on:click="getOrders()">GetOrders</el-button>
-            </el-row>
+            <router-view></router-view>
         </el-main>
-        <el-footer>Footer</el-footer>
+        <el-footer>
+            <print-layer-footer></print-layer-footer>
+        </el-footer>
     </el-container>
 </div>
