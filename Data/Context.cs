@@ -9,26 +9,43 @@ namespace PrintLayer.Data
 {
     public class Context : IdentityDbContext<User>
     {
+        private readonly IConfiguration _configuration;
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder
+                .UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
         public DbSet<Order> Orders { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<News> News { get; set; }
         public Context(DbContextOptions<Context> options, IConfiguration configuration) : base(options)
         {
-           //Database.EnsureCreated();
-            #region CustomSeeding
-            using (var context = new DataSeedingContext(configuration))
-            {
-                context.Database.EnsureCreated();
-                context.News.Add(new News {Name = "Test Name", Description = "This is a test news description"});
-                //var testBlog = context.Blogs.FirstOrDefault(b => b.Url == "http://test.com");
-                //if (testBlog == null)
-                //{
-                //    context.Blogs.Add(new Blog { Url = "http://test.com" });
-                //}
+            _configuration = configuration;
+            Database.EnsureCreated();
+            //using var context = new DataSeedingContext(options, configuration);
+            //context.Database.EnsureCreated();
+            //context.SaveChanges();
 
-                context.SaveChanges();
-            }
+            #region CustomSeeding
+
             #endregion
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Seed();
+        }
+    }
+
+    public static class ModelBuilderExtensions
+    {
+        public static void Seed(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<News>(entity => { entity.Property(e => e.Id).IsRequired(); });
+
+            modelBuilder.Entity<News>().HasData(new News
+            {
+                Name = "Test Name",
+                Description = "This is a test news description"
+            });
         }
     }
 }

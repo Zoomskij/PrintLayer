@@ -214,6 +214,11 @@ namespace PrintLayer.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "News",
+                columns: new[] { "Id", "CreatedDate", "Description", "ModifiedDate", "Name" },
+                values: new object[] { new Guid("9e3095e5-cf9b-420a-a90a-f2c5c476289b"), new DateTime(2021, 12, 24, 7, 53, 54, 444, DateTimeKind.Utc).AddTicks(8662), "This is a test news description", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

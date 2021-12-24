@@ -10,7 +10,7 @@ using PrintLayer.Data;
 namespace PrintLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211223142031_Init")]
+    [Migration("20211224075405_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,6 +173,16 @@ namespace PrintLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("News");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("9e3095e5-cf9b-420a-a90a-f2c5c476289b"),
+                            CreatedDate = new DateTime(2021, 12, 24, 7, 53, 54, 444, DateTimeKind.Utc).AddTicks(8662),
+                            Description = "This is a test news description",
+                            ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Test Name"
+                        });
                 });
 
             modelBuilder.Entity("PrintLayer.Models.Order", b =>
