@@ -12,14 +12,15 @@
 
 
 <div id="app">
-    <el-row>
-        <el-button>Default</el-button>
-    </el-row>
-    <el-date-picker type="date"
-                    placeholder="Pick a day">
-    </el-date-picker>
-    <el-row>
-        <el-button v-on:click="getOrders()">GetOrders</el-button>
-    </el-row>
-    <span>...</span>
+    <el-container>
+        <el-header>
+            <print-layer-header></print-layer-header>
+        </el-header>
+        <el-main>
+            <el-row>
+                <el-button v-on:click="getOrders()">GetOrders</el-button>
+            </el-row>
+        </el-main>
+        <el-footer>Footer</el-footer>
+    </el-container>
 </div>

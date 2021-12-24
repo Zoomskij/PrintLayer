@@ -4,14 +4,13 @@ import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale'
 import ruLocale from 'element-ui/lib/locale/lang/ru-RU'
 import axios from 'axios';
-
-import { Input } from 'element-ui'
+import Header from "~/components/Header.vue";
 
 locale.use(ruLocale);
 Vue.use(ElementUI, { ruLocale });
 Vue.prototype.$axios = axios;
 
-Vue.use(Input);
+Vue.component("print-layer-header", Header);
 
 function startOnLoad() {
     var app = new Vue({
