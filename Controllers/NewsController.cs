@@ -20,7 +20,7 @@ namespace PrintLayer.Controllers
         }
 
         [HttpGet]
-        public async Task<List<News>> Get()
+        public List<News> Get()
         {
             var news = _commonService.GetAll().ToList();
             return news;

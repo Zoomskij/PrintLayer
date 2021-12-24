@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using PrintLayer.Models;
 using PrintLayer.Services.Interfaces;
 
@@ -24,6 +25,13 @@ namespace PrintLayer.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public List<Review> Get()
+        {
+            var reviews = _commonService.GetAll().ToList();
+            return reviews;
         }
 
         [HttpPost]
