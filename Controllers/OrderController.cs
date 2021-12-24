@@ -20,10 +20,10 @@ namespace PrintLayer.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Order>> Get()
+        public List<Order> Get()
         {
             var orders = _commonService.GetAll().ToList();
-            return (List<Order>)orders;
+            return orders;
         }
 
         [HttpGet]
