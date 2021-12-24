@@ -73,13 +73,6 @@ namespace PrintLayer.Controllers
             }, CookieAuthenticationDefaults.AuthenticationScheme);
             return user;
 
-            //return SignIn(claimsPrincipal, new AuthenticationProperties
-            //    {
-            //        ExpiresUtc = DateTime.UtcNow.AddDays(1),
-            //        IsPersistent = false,
-            //        IssuedUtc = DateTime.UtcNow
-            //    }
-            //    , CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
 
