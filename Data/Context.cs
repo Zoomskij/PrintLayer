@@ -45,34 +45,44 @@ namespace PrintLayer.Data
 
             //////Seed Orders///////
             modelBuilder.Entity<Order>(entity => { entity.Property(e => e.Id).IsRequired(); });
-            var order = new Order
+            for (var i = 0; i < 20; i++)
             {
-                UserId = user.Id,
-                Address = "Moscow Kremlin",
-                Status = OrderStatus.New,
-                Phone = "+71234567890",
-                Description = "Sample Description"
-            };
-            modelBuilder.Entity<Order>().HasData(order);
+                var order = new Order
+                {
+                    UserId = user.Id,
+                    Address = $"Moscow Kremlin st {i}",
+                    Status = OrderStatus.New,
+                    Phone = "+71234567890",
+                    Description = $"Sample Description {i}"
+                };
+                modelBuilder.Entity<Order>().HasData(order);
+            }
+
 
             //////Seed Reviews///////
             modelBuilder.Entity<Review>(entity => { entity.Property(e => e.Id).IsRequired(); });
-            var review = new Review
+            for (byte i = 1; i < 5; i++)
             {
-                UserId = user.Id,
-                UserName = user.UserName,
-                Description = "Sample review Description",
-                Grade = 4
-            };
-            modelBuilder.Entity<Review>().HasData(review);
+                var review = new Review
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Description = $"Sample review Description {i}",
+                    Grade = i
+                };
+                modelBuilder.Entity<Review>().HasData(review);
+            }
 
             ///////Seed News////////
             modelBuilder.Entity<News>(entity => { entity.Property(e => e.Id).IsRequired(); });
-            modelBuilder.Entity<News>().HasData(new News
+            for (byte i = 1; i < 5; i++)
             {
-                Name = "Test Name",
-                Description = "This is a test news description"
-            });
+                modelBuilder.Entity<News>().HasData(new News
+                {
+                    Name = $"Test Name {i}",
+                    Description = $"This is a test news description {i}"
+                });
+            }
         }
     }
 }
