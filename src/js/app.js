@@ -1,4 +1,5 @@
 ﻿import Vue from 'vue'
+import VueRouter from 'vue-router'
 
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale'
@@ -6,6 +7,9 @@ import ruLocale from 'element-ui/lib/locale/lang/ru-RU'
 import axios from 'axios';
 import Header from "~/components/Header.vue";
 
+import Root from "~/Review/components/Root.vue";
+
+Vue.use(VueRouter);
 locale.use(ruLocale);
 Vue.use(ElementUI, { ruLocale });
 Vue.prototype.$axios = axios;
@@ -13,8 +17,39 @@ Vue.prototype.$axios = axios;
 Vue.component("print-layer-header", Header);
 
 function startOnLoad() {
+    var router = new VueRouter({
+        routes: [
+            { path: '/root', caseSensitive: false, component: Root }
+        ]
+    });
+    Vue.config.devtools = true;
+
+    var vv = new Vue({
+        el: "#vue-router",
+        router,
+        data: {
+
+        },
+        router,
+        methods: {
+            back() {
+                this.$router.go(-1);
+            },
+
+            // ROUTING ------------------------------------------
+            isCurrentRoute(name) {
+                return this.$route.name === name;
+            },
+        },
+
+
+    });
+
+
+
     var app = new Vue({
         el: '#app',
+        router,
         data: {
             message: 'Vue!',
             login: '',
