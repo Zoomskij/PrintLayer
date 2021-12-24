@@ -12,7 +12,6 @@ namespace PrintLayer.Services.Interfaces
         Task<T> FirstAsync(Expression<Func<T, bool>> predicate);
 
         Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
-
         IQueryable<T> GetAll();
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
 

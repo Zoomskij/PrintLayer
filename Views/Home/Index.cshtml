@@ -15,10 +15,11 @@
     <el-row>
         <el-button>Default</el-button>
     </el-row>
-    <el-date-picker
-        type="date"
-        placeholder="Pick a day">
+    <el-date-picker type="date"
+                    placeholder="Pick a day">
     </el-date-picker>
-
+    <el-row>
+        <el-button v-on:click="getOrders()">GetOrders</el-button>
+    </el-row>
     <span>...</span>
 </div>

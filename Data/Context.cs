@@ -20,13 +20,6 @@ namespace PrintLayer.Data
         {
             _configuration = configuration;
             Database.EnsureCreated();
-            //using var context = new DataSeedingContext(options, configuration);
-            //context.Database.EnsureCreated();
-            //context.SaveChanges();
-
-            #region CustomSeeding
-
-            #endregion
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
