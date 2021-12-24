@@ -6,8 +6,11 @@ import locale from 'element-ui/lib/locale'
 import ruLocale from 'element-ui/lib/locale/lang/ru-RU'
 import axios from 'axios';
 import Header from "~/components/Header.vue";
+import Footer from "~/components/Footer.vue";
 
-import Root from "~/Review/components/Root.vue";
+import Home from "~/Home/components/Root.vue";
+import Review from "~/Review/components/Root.vue";
+import Order from "~/Order/components/Root.vue";
 
 Vue.use(VueRouter);
 locale.use(ruLocale);
@@ -15,11 +18,14 @@ Vue.use(ElementUI, { ruLocale });
 Vue.prototype.$axios = axios;
 
 Vue.component("print-layer-header", Header);
+Vue.component("print-layer-footer", Footer);
 
 function startOnLoad() {
     var router = new VueRouter({
         routes: [
-            { path: '/root', caseSensitive: false, component: Root }
+            { path: '/', caseSensitive: false, component: Home },
+            { path: '/review', caseSensitive: false, component: Review },
+            { path: '/order', caseSensitive: false, component: Order }
         ]
     });
     Vue.config.devtools = true;
