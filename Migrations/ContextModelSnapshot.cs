@@ -175,8 +175,8 @@ namespace PrintLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9e3095e5-cf9b-420a-a90a-f2c5c476289b"),
-                            CreatedDate = new DateTime(2021, 12, 24, 7, 53, 54, 444, DateTimeKind.Utc).AddTicks(8662),
+                            Id = new Guid("6e00748c-d72e-4909-bad5-936156036cdf"),
+                            CreatedDate = new DateTime(2021, 12, 24, 8, 18, 8, 313, DateTimeKind.Utc).AddTicks(7531),
                             Description = "This is a test news description",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Test Name"
@@ -215,6 +215,19 @@ namespace PrintLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d6b80fa5-8e06-4656-9a53-55c2a82a88cf"),
+                            Address = "Moscow Kremlin",
+                            CreatedDate = new DateTime(2021, 12, 24, 8, 18, 8, 313, DateTimeKind.Utc).AddTicks(179),
+                            Description = "Sample Description",
+                            ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Phone = "+71234567890",
+                            Status = 1,
+                            UserId = "21da0d42-e5ce-49a9-ba67-6e2d0a93258a"
+                        });
                 });
 
             modelBuilder.Entity("PrintLayer.Models.Review", b =>
@@ -246,6 +259,18 @@ namespace PrintLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("42b28dc3-b3c4-4f63-8c8e-9e1c2d8a4af5"),
+                            CreatedDate = new DateTime(2021, 12, 24, 8, 18, 8, 313, DateTimeKind.Utc).AddTicks(4102),
+                            Description = "Sample review Description",
+                            Grade = (byte)4,
+                            ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            UserId = "21da0d42-e5ce-49a9-ba67-6e2d0a93258a",
+                            UserName = "Admin Admin"
+                        });
                 });
 
             modelBuilder.Entity("PrintLayer.Models.User", b =>
@@ -311,6 +336,22 @@ namespace PrintLayer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "21da0d42-e5ce-49a9-ba67-6e2d0a93258a",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6f1c8a47-2673-442e-af39-1dfcdd07c8cd",
+                            Email = "admin",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PasswordHash = "a322b9c0b8e19ef16d4d308cd4e1222106d0edf8fbb3c8f1649242dff54a740c",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f95d9609-f7a7-4e0b-bf7f-287fbe642193",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin Admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

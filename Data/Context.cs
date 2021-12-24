@@ -39,8 +39,42 @@ namespace PrintLayer.Data
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<News>(entity => { entity.Property(e => e.Id).IsRequired(); });
+            //////Seed Users//////
+            modelBuilder.Entity<User>(entity => { entity.Property(e => e.Id).IsRequired(); });
+            var user = new User()
+            {
+                Email = "admin",
+                PasswordHash = "a322b9c0b8e19ef16d4d308cd4e1222106d0edf8fbb3c8f1649242dff54a740c",
+                EmailConfirmed = true,
+                UserName = "Admin Admin"
+            };
+            modelBuilder.Entity<User>().HasData(user);
 
+            //////Seed Orders///////
+            modelBuilder.Entity<Order>(entity => { entity.Property(e => e.Id).IsRequired(); });
+            var order = new Order
+            {
+                UserId = user.Id,
+                Address = "Moscow Kremlin",
+                Status = OrderStatus.New,
+                Phone = "+71234567890",
+                Description = "Sample Description"
+            };
+            modelBuilder.Entity<Order>().HasData(order);
+
+            //////Seed Reviews///////
+            modelBuilder.Entity<Review>(entity => { entity.Property(e => e.Id).IsRequired(); });
+            var review = new Review
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                Description = "Sample review Description",
+                Grade = 4
+            };
+            modelBuilder.Entity<Review>().HasData(review);
+
+            ///////Seed News////////
+            modelBuilder.Entity<News>(entity => { entity.Property(e => e.Id).IsRequired(); });
             modelBuilder.Entity<News>().HasData(new News
             {
                 Name = "Test Name",

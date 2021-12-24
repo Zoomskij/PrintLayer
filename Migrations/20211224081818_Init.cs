@@ -215,9 +215,24 @@ namespace PrintLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "21da0d42-e5ce-49a9-ba67-6e2d0a93258a", 0, "6f1c8a47-2673-442e-af39-1dfcdd07c8cd", "admin", true, false, null, null, null, "a322b9c0b8e19ef16d4d308cd4e1222106d0edf8fbb3c8f1649242dff54a740c", null, false, "f95d9609-f7a7-4e0b-bf7f-287fbe642193", false, "Admin Admin" });
+
+            migrationBuilder.InsertData(
                 table: "News",
                 columns: new[] { "Id", "CreatedDate", "Description", "ModifiedDate", "Name" },
-                values: new object[] { new Guid("9e3095e5-cf9b-420a-a90a-f2c5c476289b"), new DateTime(2021, 12, 24, 7, 53, 54, 444, DateTimeKind.Utc).AddTicks(8662), "This is a test news description", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name" });
+                values: new object[] { new Guid("6e00748c-d72e-4909-bad5-936156036cdf"), new DateTime(2021, 12, 24, 8, 18, 8, 313, DateTimeKind.Utc).AddTicks(7531), "This is a test news description", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name" });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "Address", "CreatedDate", "Description", "ModifiedDate", "Phone", "Status", "UserId" },
+                values: new object[] { new Guid("d6b80fa5-8e06-4656-9a53-55c2a82a88cf"), "Moscow Kremlin", new DateTime(2021, 12, 24, 8, 18, 8, 313, DateTimeKind.Utc).AddTicks(179), "Sample Description", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "21da0d42-e5ce-49a9-ba67-6e2d0a93258a" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "Id", "CreatedDate", "Description", "Grade", "ModifiedDate", "UserId", "UserName" },
+                values: new object[] { new Guid("42b28dc3-b3c4-4f63-8c8e-9e1c2d8a4af5"), new DateTime(2021, 12, 24, 8, 18, 8, 313, DateTimeKind.Utc).AddTicks(4102), "Sample review Description", (byte)4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "21da0d42-e5ce-49a9-ba67-6e2d0a93258a", "Admin Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
