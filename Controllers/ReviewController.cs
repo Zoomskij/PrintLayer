@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Newtonsoft.Json;
 using PrintLayer.Models;
 using PrintLayer.Services.Interfaces;
 
@@ -36,7 +37,7 @@ namespace PrintLayer.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task Add(Review review)
+        public async Task Add([FromBody] Review review)
         {
             review.User = await _authService.GetUserByLoginAsync("admin");
             await _commonService.AddAsync(review);
