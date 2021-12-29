@@ -43,5 +43,11 @@ namespace PrintLayer.Controllers
             await _commonService.AddAsync(review);
         }
 
+        [HttpPut]
+        public async Task Update([FromBody] Review review)
+        {
+            await _commonService.UpdateAsync(review);
+        }
+
     }
 }

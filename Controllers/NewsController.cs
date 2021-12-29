@@ -27,9 +27,15 @@ namespace PrintLayer.Controllers
         }
 
         [HttpPost]
-        public async Task Add(News news)
+        public async Task Add([FromBody] News news)
         {
             await _commonService.AddAsync(news);
+        }
+
+        [HttpPut]
+        public async Task Update([FromBody] News news)
+        {
+            await _commonService.UpdateAsync(news);
         }
     }
 }
