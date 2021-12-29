@@ -35,10 +35,16 @@ namespace PrintLayer.Controllers
         }
 
         [HttpPost]
-        public async Task Add(Order order)
+        public async Task Add([FromBody] Order order)
         {
             order.User = await _authService.GetUserByLoginAsync("admin");
             await _commonService.AddAsync(order);
+        }
+
+        [HttpPut]
+        public async Task Update([FromBody] Order order)
+        {
+            await _commonService.UpdateAsync(order);
         }
     }
 }
