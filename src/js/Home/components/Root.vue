@@ -2,6 +2,7 @@
     <div>
         <span>Home</span>
         <news></news>
+        <pdf></pdf>
     </div>
 </template>
 

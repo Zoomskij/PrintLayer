@@ -12,6 +12,7 @@ import Home from "~/Home/components/Root.vue";
 import Review from "~/Review/components/Root.vue";
 import Order from "~/Order/components/Root.vue";
 import News from "~/Home/components/News.vue";
+import Pdf from "~/Home/components/Pdf.vue";
 
 Vue.use(VueRouter);
 locale.use(ruLocale);
@@ -21,6 +22,7 @@ Vue.prototype.$axios = axios;
 Vue.component("print-layer-header", Header);
 Vue.component("print-layer-footer", Footer);
 Vue.component("news", News);
+Vue.component("pdf", Pdf);
 
 function startOnLoad() {
     var router = new VueRouter({
