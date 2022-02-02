@@ -25,8 +25,12 @@
                 </el-submenu>
             </el-submenu>
             <el-menu-item index="3"><router-link to="/review">Review</router-link></el-menu-item>
-            
+
             <el-menu-item index="4"><router-link to="/order">Orders</router-link></el-menu-item>
+
+            <el-menu-item index="5"><p-login></p-login></el-menu-item>
+
+            <el-menu-item index="6"><p-registration></p-registration></el-menu-item>
         </el-menu>
     </div>
 </template>
@@ -34,6 +38,8 @@
 <script>
     export default {
         name: 'print-layer-header',
+        components: {
+        },
         data() {
             return {
                 activeIndex: '1',

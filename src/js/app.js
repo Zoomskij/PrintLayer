@@ -12,6 +12,8 @@ import Home from "~/Home/components/Root.vue";
 import Review from "~/Review/components/Root.vue";
 import Order from "~/Order/components/Root.vue";
 import News from "~/Home/components/News.vue";
+import LoginVue from '~/components/Login.vue';
+import RegistrationVue from '~/components/Registration.vue'
 
 Vue.use(VueRouter);
 locale.use(ruLocale);
@@ -21,8 +23,12 @@ Vue.prototype.$axios = axios;
 Vue.component("print-layer-header", Header);
 Vue.component("print-layer-footer", Footer);
 Vue.component("news", News);
+Vue.component("p-login", LoginVue);
+Vue.component("p-registration", RegistrationVue);
 
 function startOnLoad() {
+
+
     var router = new VueRouter({
         routes: [
             { path: '/', caseSensitive: false, component: Home },
@@ -52,74 +58,14 @@ function startOnLoad() {
 
     });
 
-
-
     var app = new Vue({
         el: '#app',
         router,
         data: {
-            message: 'Vue!',
-            login: '',
-            password: '',
-            user:[]
+
         },
         methods: {
-            auth: function () {
-                //console.log(this.login);
-                var self = this;
-                var model = {
-                    login: this.login,
-                    password: this.password
-                }
-                this.$axios.post('/account/login', model, {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    .then(function (response) {
-                        self.user = response.data;
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        self.user = error;
-                        console.log(error);
-                    });
-            },
-            registration: function () {
-                //console.log(this.login);
-                var self = this;
-                var model = {
-                    login: this.login,
-                    password: this.password
-                }
-                this.$axios.post('/account/registration', model, {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    .then(function (response) {
-                        self.user = response.data;
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        self.user = error;
-                        console.log(error);
-                    });
-            },
-            getOrders: function () {
-                var self = this;
-                this.$axios.get('/order',{
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    .then(function (response) {
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            }
+
         }
     });
 }
