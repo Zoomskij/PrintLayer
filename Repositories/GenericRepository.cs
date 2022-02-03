@@ -66,9 +66,9 @@ namespace PrintLayer.Repositories
             var existing = await _dbSet.FindAsync(entity.Id);
             if (existing != null)
             {
-                existing.ModifiedDate = DateTime.UtcNow;
                 _context.Entry(existing).CurrentValues.SetValues(entity);
-                _context.Entry(existing).Property("AddedDate").IsModified = false;
+                existing.ModifiedDate = DateTime.UtcNow;
+                _context.Entry(existing).Property("CreatedDate").IsModified = false;
             }
         }
 

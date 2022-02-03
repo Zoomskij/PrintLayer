@@ -22,8 +22,8 @@ namespace PrintLayer.Controllers
         [HttpGet]
         public IEnumerable<Order> Get()
         {
-            var oreders = _commonService.GetAll();
-            return oreders;
+            var orders = _commonService.GetAll();
+            return orders;
         }
 
         [HttpGet]
