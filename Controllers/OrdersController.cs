@@ -9,11 +9,11 @@ using PrintLayer.Services.Interfaces;
 namespace PrintLayer.Controllers
 {
     [Route("[controller]")]
-    public class OrderController : Controller
+    public class OrdersController : Controller
     {
         private readonly ICommonService<Order> _commonService;
         private readonly IAuthService _authService;
-        public OrderController(ICommonService<Order> commonService, IAuthService authService)
+        public OrdersController(ICommonService<Order> commonService, IAuthService authService)
         {
             _commonService = commonService;
             _authService = authService;

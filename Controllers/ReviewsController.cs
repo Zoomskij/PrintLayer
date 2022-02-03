@@ -11,12 +11,12 @@ using PrintLayer.Services.Interfaces;
 namespace PrintLayer.Controllers
 {
     [Route("[controller]")]
-    public class ReviewController : Controller 
+    public class ReviewsController : Controller 
     {
         private readonly ICommonService<Review> _commonService;
         private readonly IAuthService _authService;
 
-        public ReviewController( ICommonService<Review> commonService, IAuthService authService)
+        public ReviewsController( ICommonService<Review> commonService, IAuthService authService)
         {
             _commonService = commonService;
             _authService = authService;

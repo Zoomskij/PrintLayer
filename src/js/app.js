@@ -9,8 +9,8 @@ import Header from "~/components/Header.vue";
 import Footer from "~/components/Footer.vue";
 
 import Home from "~/Home/components/Root.vue";
-import Review from "~/Review/components/Root.vue";
-import Order from "~/Order/components/Root.vue";
+import Review from "~/Reviews/components/Root.vue";
+import Order from "~/Orders/components/Root.vue";
 import News from "~/Home/components/News.vue";
 import LoginVue from '~/components/Login.vue';
 import RegistrationVue from '~/components/Registration.vue'
@@ -32,8 +32,8 @@ function startOnLoad() {
     var router = new VueRouter({
         routes: [
             { path: '/', caseSensitive: false, component: Home },
-            { path: '/review', caseSensitive: false, component: Review },
-            { path: '/order', caseSensitive: false, component: Order }
+            { path: '/reviews', caseSensitive: false, component: Review },
+            { path: '/orders', caseSensitive: false, component: Order }
         ]
     });
     Vue.config.devtools = true;

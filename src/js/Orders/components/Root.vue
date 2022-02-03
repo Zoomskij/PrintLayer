@@ -37,7 +37,7 @@
         methods: {
             getOrders: function () {
                 var self = this;
-                this.$axios.get('/order', {
+                this.$axios.get('/orders', {
                     headers: {
                         'Content-Type': 'application/json'
                     }

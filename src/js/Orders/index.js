@@ -7,7 +7,7 @@ import ruLocale from 'element-ui/lib/locale/lang/ru-RU'
 locale.use(ruLocale);
 Vue.use(ElementUI, { ruLocale });
 
-import Root from "~/Review/components/Root.vue";
+import Root from "~/Orders/components/Root.vue";
 
 import axios from 'axios';
 

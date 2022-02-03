@@ -38,7 +38,7 @@
         methods: {
             getReviews: function () {
                 var self = this;
-                this.$axios.get('/review', {
+                this.$axios.get('/reviews', {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -61,7 +61,7 @@
 
                 this.$axios({
                     method: 'post',
-                    url: '/review/add',
+                    url: '/reviews/add',
                     data: review
                 })
                     .then(function (response) {

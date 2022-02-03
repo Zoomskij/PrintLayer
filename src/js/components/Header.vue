@@ -24,9 +24,9 @@
                     <el-menu-item index="2-4-3">item three</el-menu-item>
                 </el-submenu>
             </el-submenu>
-            <el-menu-item index="3"><router-link to="/review">Review</router-link></el-menu-item>
+            <el-menu-item index="3"><router-link to="/reviews">Reviews</router-link></el-menu-item>
 
-            <el-menu-item index="4"><router-link to="/order">Orders</router-link></el-menu-item>
+            <el-menu-item index="4"><router-link to="/orders">Orders</router-link></el-menu-item>
 
             <el-menu-item index="5"><p-login></p-login></el-menu-item>
 
