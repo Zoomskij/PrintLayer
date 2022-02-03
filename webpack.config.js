@@ -7,7 +7,8 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         app_index: './src/js/app.js',
-        review_index: ['./src/js/Review/index.js'],
+        reviews_index: ['./src/js/Reviews/index.js'],
+        orders_index: ['./src/js/Orders/index.js'],
     },
     output: {
         // The name under which the editor will be exported.

@@ -9,35 +9,47 @@ using PrintLayer.Services.Interfaces;
 namespace PrintLayer.Controllers
 {
     [Route("[controller]")]
-    public class OrderController : Controller
+    public class OrdersController : Controller
     {
         private readonly ICommonService<Order> _commonService;
         private readonly IAuthService _authService;
-        public OrderController(ICommonService<Order> commonService, IAuthService authService)
+        public OrdersController(ICommonService<Order> commonService, IAuthService authService)
         {
             _commonService = commonService;
             _authService = authService;
         }
 
         [HttpGet]
-        public List<Order> Get()
+        public IEnumerable<Order> Get()
         {
-            var orders = _commonService.GetAll().ToList();
-            return orders;
+            var oreders = _commonService.GetAll();
+            return oreders;
         }
 
         [HttpGet]
-        [Route("order/{id}")]
-        public async Task<Order> Get(Guid id)
+        [Route("{id}")]
+        public async Task<Order> GetById(Guid id)
         {
             var order = await _commonService.FindAsync(id);
             return order;
         }
 
+        [HttpDelete]
+        public async Task Delete([FromBody] Order order)
+        {
+            await _commonService.DeleteAsync(order);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task DeleteById(Guid id)
+        {
+            await _commonService.DeleteAsync(id);
+        }
+
         [HttpPost]
         public async Task Add([FromBody] Order order)
         {
-            order.User = await _authService.GetUserByLoginAsync("admin");
             await _commonService.AddAsync(order);
         }
 
