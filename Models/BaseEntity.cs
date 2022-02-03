@@ -8,7 +8,7 @@ namespace PrintLayer.Models
 {
     public abstract class BaseEntity
     {
-        private DateTime _addedDate;
+        private DateTime _createdDate;
         private DateTime _modifiedDate;
         protected BaseEntity()
         {
@@ -20,8 +20,8 @@ namespace PrintLayer.Models
         public Guid Id { get; set; }
         public DateTime CreatedDate
         {
-            get => DateTime.SpecifyKind(_addedDate, DateTimeKind.Utc);
-            private set => _addedDate = value;
+            get => DateTime.SpecifyKind(_createdDate, DateTimeKind.Utc);
+            private set => _createdDate = value;
         }
         public DateTime ModifiedDate
         {
