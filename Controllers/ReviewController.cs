@@ -29,14 +29,34 @@ namespace PrintLayer.Controllers
         }
 
         [HttpGet]
-        public List<Review> Get()
+        public IEnumerable<Review> Get()
         {
-            var reviews = _commonService.GetAll().ToList();
+            var reviews = _commonService.GetAll();
             return reviews;
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<Review> GetById(Guid id)
+        {
+            var review = await _commonService.FindAsync(id);
+            return review;
+        }
+
+        [HttpDelete]
+        public async Task Delete([FromBody] Review review)
+        {
+            await _commonService.DeleteAsync(review);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task DeleteById(Guid id)
+        {
+            await _commonService.DeleteAsync(id);
+        }
+
         [HttpPost]
-        [Route("add")]
         public async Task Add([FromBody] Review review)
         {
             review.User = await _authService.GetUserByLoginAsync("admin");

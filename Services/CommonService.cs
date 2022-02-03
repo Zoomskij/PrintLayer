@@ -27,14 +27,14 @@ namespace PrintLayer.Services
             return await _repository.FirstOrDefaultAsync(predicate);
         }
 
-        public virtual IQueryable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
-            return _repository.GetAll();
+            return _repository.GetAll().ToList();
         }
 
-        public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
-            return _repository.FindBy(predicate);
+            return _repository.FindBy(predicate).ToList();
         }
 
         public async Task<T> FindAsync(params object[] keys)

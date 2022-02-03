@@ -9,7 +9,7 @@ using PrintLayer.Services.Interfaces;
 
 namespace PrintLayer.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]")] 
     public class NewsController : Controller
     {
         private readonly ICommonService<News> _commonService;
@@ -20,10 +20,31 @@ namespace PrintLayer.Controllers
         }
 
         [HttpGet]
-        public List<News> Get()
+        public IEnumerable<News> Get()
         {
-            var news = _commonService.GetAll().ToList();
+            var news = _commonService.GetAll();
             return news;
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<News> GetById(Guid id)
+        {
+            var news = await _commonService.FindAsync(id);
+            return news;
+        }
+
+        [HttpDelete]
+        public async Task Delete([FromBody] News news)
+        {
+            await _commonService.DeleteAsync(news);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task DeleteById(Guid id)
+        {
+            await _commonService.DeleteAsync(id);
         }
 
         [HttpPost]
