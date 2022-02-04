@@ -2,6 +2,8 @@
 {
     New = 1,
     InWork = 2,
-    Finish = 3
+    Accepted = 3,
+    Finished = 4,
+    Declined = 5
 }
 
