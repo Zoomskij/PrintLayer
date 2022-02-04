@@ -9,104 +9,68 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using PrintLayer.Models;
 using PrintLayer.Services.Interfaces;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 
 namespace PrintLayer.Controllers
 {
     [Route("[controller]")]
     public class AccountController : Controller
     {
-        private readonly IAuthService _authService;
-        public AccountController(IAuthService authService)
+        // тестовые данные вместо использования базы данных
+        private List<Person> people = new List<Person>
         {
-            _authService = authService;
-        }
+            new Person {Login="admin", Password="admin", Role = "admin" },
+            new Person { Login="user", Password="user", Role = "user" }
+        };
 
-        [Route("index")]
-        public IActionResult Index()
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] Person person)
         {
-            return View();
-        }
-
-        [Route("login")]
-        public IActionResult Login()
-        {
-            return View("Index");
-        }
-
-        [HttpPost("[action]")]
-        [AllowAnonymous]
-        public async Task<User> Login([FromBody] LoginModel credentials)
-        {
-            if (!ModelState.IsValid)
+            var identity = GetIdentity(person.Login, person.Password);
+            if (identity == null)
             {
-                //return BadRequest();
+                return BadRequest(new { errorText = "Invalid username or password." });
             }
 
-           // if (HttpContext.User != null)
-           //     await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            var now = DateTime.UtcNow;
+            // создаем JWT-токен
+            var jwt = new JwtSecurityToken(
+                    issuer: AuthOptions.ISSUER,
+                    audience: AuthOptions.AUDIENCE,
+                    notBefore: now,
+                    claims: identity.Claims,
+                    expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
+                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-            var user = await _authService.LoginAsync(credentials.Login, credentials.Password);
-
-            if (user == null) return null;
-
-            var nameIdentifier = user.Id.ToString();
-
-
-            var claimsIdentity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            //claimsIdentity.AddClaims(user.ClaimValues.Select(claimValue => new Claim(claimValue.Name, claimValue.Value ?? "")));
-            claimsIdentity.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, nameIdentifier));
-
-            //foreach (var role in user.Roles)
-            //{
-            //    claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, role));
-            //}
-
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
-            SignIn(claimsPrincipal, new AuthenticationProperties
+            var response = new
             {
-                ExpiresUtc = DateTime.UtcNow.AddDays(1),
-                IsPersistent = false,
-                IssuedUtc = DateTime.UtcNow
-            }, CookieAuthenticationDefaults.AuthenticationScheme);
-            return user;
+                access_token = encodedJwt,
+                username = identity.Name
+            };
 
+            return Json(response);
         }
 
-
-        [HttpPost("[action]")]
-        [AllowAnonymous]
-        public async Task<User> Registration([FromBody] LoginModel credentials)
+        private ClaimsIdentity GetIdentity(string username, string password)
         {
-            if (!ModelState.IsValid)
+            Person person = people.FirstOrDefault(x => x.Login == username && x.Password == password);
+            if (person != null)
             {
-                //return BadRequest();
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, person.Login),
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, person.Role)
+                };
+                ClaimsIdentity claimsIdentity =
+                new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
+                    ClaimsIdentity.DefaultRoleClaimType);
+                return claimsIdentity;
             }
 
-            // if (HttpContext.User != null)
-            //     await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            var user = await _authService.CreateUserAsync(credentials.Login, credentials.Password);
-
-            if (user == null) return null;
-
-            var nameIdentifier = user.Id.ToString();
-
-            var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity());
-            return user;
-
-
-        }
-
-        [HttpPost("[action]")]
-        public ActionResult Logout()
-        {
-            if (HttpContext.User == null)
-                return BadRequest();
-
-            return SignOut(CookieAuthenticationDefaults.AuthenticationScheme);
+            // если пользователя не найдено
+            return null;
         }
     }
 }

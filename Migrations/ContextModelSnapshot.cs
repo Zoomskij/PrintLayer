@@ -19,137 +19,6 @@ namespace PrintLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserLogins");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("AspNetUserTokens");
-                });
-
             modelBuilder.Entity("PrintLayer.Models.News", b =>
                 {
                     b.Property<Guid>("Id")
@@ -175,32 +44,32 @@ namespace PrintLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e47fc99e-9796-4bfc-b700-76b892e1caed"),
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(6489),
+                            Id = new Guid("a6ea94bf-9441-4a96-af1d-91bcd71e0d6b"),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(9773),
                             Description = "This is a test news description 1",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Test Name 1"
                         },
                         new
                         {
-                            Id = new Guid("31d7cda3-7f1e-4ebd-83f1-e346f84abdd3"),
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(7084),
+                            Id = new Guid("1557a5aa-9162-4598-972a-b484dfbe3e41"),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 404, DateTimeKind.Utc).AddTicks(372),
                             Description = "This is a test news description 2",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Test Name 2"
                         },
                         new
                         {
-                            Id = new Guid("710fb015-5a4d-4805-bde7-1d5030ecf950"),
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(7126),
+                            Id = new Guid("f3c285e4-89a8-4b71-8acf-0a5797e71443"),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 404, DateTimeKind.Utc).AddTicks(416),
                             Description = "This is a test news description 3",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Test Name 3"
                         },
                         new
                         {
-                            Id = new Guid("116237d8-5eb3-47a1-81db-1421ac7cb73b"),
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(7151),
+                            Id = new Guid("a7fe9af6-8b1f-4d5b-8572-7a87b26f9e07"),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 404, DateTimeKind.Utc).AddTicks(435),
                             Description = "This is a test news description 4",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Test Name 4"
@@ -243,223 +112,223 @@ namespace PrintLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fb2f0222-8553-4242-9722-a6d6c12b7310"),
+                            Id = new Guid("d79df427-4a10-48e0-9382-ee9132693636"),
                             Address = "Moscow Kremlin st 0",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(7981),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(1543),
                             Description = "Sample Description 0",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("56fb7c2c-34ac-40db-9561-6bb3706d3d5f"),
+                            Id = new Guid("1e027204-02f9-4ee1-bd70-e714db17a24a"),
                             Address = "Moscow Kremlin st 1",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9535),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3027),
                             Description = "Sample Description 1",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("5cba18cd-4d71-4fe9-90db-3f410e34af27"),
+                            Id = new Guid("98f5e8d1-7bdb-442b-84a9-2549202733a3"),
                             Address = "Moscow Kremlin st 2",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9618),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3105),
                             Description = "Sample Description 2",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("45a3da50-d3bd-4c19-a970-f925e8221c0e"),
+                            Id = new Guid("5ae1121f-d280-4461-8ec5-264c4d3a9460"),
                             Address = "Moscow Kremlin st 3",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9650),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3126),
                             Description = "Sample Description 3",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("ec64890f-b6df-4554-8260-ab88bfce4ffe"),
+                            Id = new Guid("1be3af4e-0bb8-4e8f-bc3b-ff4c76cdb384"),
                             Address = "Moscow Kremlin st 4",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9672),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3157),
                             Description = "Sample Description 4",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("70d96bd6-6333-4e8d-b985-97322b41c292"),
+                            Id = new Guid("1ed74ca9-55c4-4971-a126-83909861f303"),
                             Address = "Moscow Kremlin st 5",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9694),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3178),
                             Description = "Sample Description 5",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("f822e6e8-b5a5-4d4a-9dd0-727e2a267def"),
+                            Id = new Guid("67322e7e-b3c0-43e1-ac73-b75a69b54022"),
                             Address = "Moscow Kremlin st 6",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9713),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3196),
                             Description = "Sample Description 6",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("6606290b-6811-494c-9974-d62cddb440be"),
+                            Id = new Guid("89263206-80d2-4883-bdbe-4ee1f63fc576"),
                             Address = "Moscow Kremlin st 7",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9732),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3214),
                             Description = "Sample Description 7",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("1327c0da-68de-4b80-870d-bbbff8c1710d"),
+                            Id = new Guid("9d916b83-7c21-49fa-851c-d705ba0dfe8d"),
                             Address = "Moscow Kremlin st 8",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9751),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3231),
                             Description = "Sample Description 8",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("ee1bfda5-8179-4b23-a041-c217151814d1"),
+                            Id = new Guid("020c70f0-66a6-48e4-bca1-e0665bea9e8e"),
                             Address = "Moscow Kremlin st 9",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9772),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3250),
                             Description = "Sample Description 9",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("5d6e0834-5c05-4fa4-9f0e-753000fcb5fd"),
+                            Id = new Guid("9e17c12e-2bbd-4f18-9c92-842084889de2"),
                             Address = "Moscow Kremlin st 10",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9791),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3268),
                             Description = "Sample Description 10",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("cd9efa5f-11b2-432e-af43-3a2f3872a579"),
+                            Id = new Guid("fc413f24-b61f-46c3-8cbb-c144e11d369a"),
                             Address = "Moscow Kremlin st 11",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9812),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3286),
                             Description = "Sample Description 11",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("c9363010-62de-4f9a-a5fa-7eda997395d7"),
+                            Id = new Guid("9f234fd8-15fa-45df-b4f2-503e38832808"),
                             Address = "Moscow Kremlin st 12",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9882),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3305),
                             Description = "Sample Description 12",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("ac5f46f7-4841-451f-9ed6-8cf8a16349e9"),
+                            Id = new Guid("4c986f86-2fbe-4904-8e06-5351373533d3"),
                             Address = "Moscow Kremlin st 13",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9905),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3323),
                             Description = "Sample Description 13",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("f04b38af-fbdb-47c7-85f1-688af15a9cff"),
+                            Id = new Guid("969db66c-b984-4215-b20b-674bcf7310ec"),
                             Address = "Moscow Kremlin st 14",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9924),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3369),
                             Description = "Sample Description 14",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("5e56290c-ef75-4e04-803e-c82866ae91ca"),
+                            Id = new Guid("b8136ec9-0457-47ff-ac4d-409c84dec7ec"),
                             Address = "Moscow Kremlin st 15",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9942),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3391),
                             Description = "Sample Description 15",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("3c1a2b8d-447f-4c18-b2f5-2ab7422ebc53"),
+                            Id = new Guid("5e2980c6-3866-434c-b958-aa8786fbd476"),
                             Address = "Moscow Kremlin st 16",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9961),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3408),
                             Description = "Sample Description 16",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("4cea8115-215a-4db9-b323-6d01c6eb0cdd"),
+                            Id = new Guid("ec78a5af-0ea4-4690-95b8-40c60e801293"),
                             Address = "Moscow Kremlin st 17",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9981),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3426),
                             Description = "Sample Description 17",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("15a71a7d-6118-459a-ae6e-8124e7e8677d"),
+                            Id = new Guid("4a22cef3-d059-422f-af00-a2c9f158e671"),
                             Address = "Moscow Kremlin st 18",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 1, DateTimeKind.Utc).AddTicks(9999),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3443),
                             Description = "Sample Description 18",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         },
                         new
                         {
-                            Id = new Guid("e039b1d0-1d30-4989-ae2d-6606d794e35a"),
+                            Id = new Guid("0b3f92fa-e610-408d-8d76-62e08c1d2390"),
                             Address = "Moscow Kremlin st 19",
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(19),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(3461),
                             Description = "Sample Description 19",
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Phone = "+71234567890",
                             Status = 1,
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8"
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1"
                         });
                 });
 
@@ -496,42 +365,42 @@ namespace PrintLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c128e968-1e51-4268-9148-4217c25482ec"),
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(2450),
+                            Id = new Guid("a92a42ca-bc29-4985-8e1d-74b4a8dba546"),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(5995),
                             Description = "Sample review Description 1",
                             Grade = (byte)1,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8",
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1",
                             UserName = "Admin Admin"
                         },
                         new
                         {
-                            Id = new Guid("4beee834-d716-4674-bfd7-c05bc0cae3e2"),
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(3864),
+                            Id = new Guid("428c0eb4-adca-410b-8978-698c29acba45"),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(7182),
                             Description = "Sample review Description 2",
                             Grade = (byte)2,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8",
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1",
                             UserName = "Admin Admin"
                         },
                         new
                         {
-                            Id = new Guid("515e4da6-3746-469f-b735-fcf9bf521b0a"),
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(3967),
+                            Id = new Guid("bcb8353f-cc02-4593-b648-ceaa92be35d8"),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(7277),
                             Description = "Sample review Description 3",
                             Grade = (byte)3,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8",
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1",
                             UserName = "Admin Admin"
                         },
                         new
                         {
-                            Id = new Guid("48d7f120-6383-4849-ba16-b01168f652a1"),
-                            CreatedDate = new DateTime(2021, 12, 24, 10, 2, 49, 2, DateTimeKind.Utc).AddTicks(3992),
+                            Id = new Guid("4d05a212-8afe-4e99-a331-e8bfa0a1c472"),
+                            CreatedDate = new DateTime(2022, 2, 4, 13, 32, 25, 403, DateTimeKind.Utc).AddTicks(7299),
                             Description = "Sample review Description 4",
                             Grade = (byte)4,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UserId = "0c32f093-abb1-48b8-bb89-c75f484dd8f8",
+                            UserId = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1",
                             UserName = "Admin Admin"
                         });
                 });
@@ -545,12 +414,10 @@ namespace PrintLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -562,12 +429,10 @@ namespace PrintLayer.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -585,87 +450,27 @@ namespace PrintLayer.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("User");
 
                     b.HasData(
                         new
                         {
-                            Id = "0c32f093-abb1-48b8-bb89-c75f484dd8f8",
+                            Id = "01b2b81c-50ba-4364-9a06-2c1aaa5338a1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "09d6c264-fe70-42a2-b572-6c0e7c5fee15",
+                            ConcurrencyStamp = "fac287d1-61e8-49ff-8ad9-3c3040a18ec8",
                             Email = "admin",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PasswordHash = "a322b9c0b8e19ef16d4d308cd4e1222106d0edf8fbb3c8f1649242dff54a740c",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a1850507-46b4-426d-9b85-be17620bf66b",
+                            SecurityStamp = "a3a2c0fe-3e31-4aee-a2f4-1a3c05fa1de4",
                             TwoFactorEnabled = false,
                             UserName = "Admin Admin"
                         });
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.HasOne("PrintLayer.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.HasOne("PrintLayer.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PrintLayer.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.HasOne("PrintLayer.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("PrintLayer.Models.Order", b =>

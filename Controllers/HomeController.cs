@@ -12,7 +12,22 @@ namespace PrintLayer.Controllers
     {
         public IActionResult Index()
         {
+            var user = User.Identity.Name;
             return View();
+        }
+
+        [Authorize]
+        [Route("getlogin")]
+        public IActionResult GetLogin()
+        {
+            return Ok($"Ваш логин: {User.Identity.Name}");
+        }
+
+        [Authorize(Roles = "admin")]
+        [Route("getrole")]
+        public IActionResult GetRole()
+        {
+            return Ok("Ваша роль: администратор");
         }
     }
 }

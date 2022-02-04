@@ -16,6 +16,8 @@ using PrintLayer.Repositories;
 using PrintLayer.Repositories.Interfaces;
 using PrintLayer.Services;
 using PrintLayer.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace PrintLayer
 {
@@ -37,11 +39,45 @@ namespace PrintLayer
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(connection));
 
+
+
+            // IdentityServer4 https://codewithmukesh.com/blog/identityserver4-in-aspnet-core/
+            services.AddIdentityServer()
+            .AddInMemoryClients(IdentityConfiguration.Clients)
+            .AddInMemoryIdentityResources(IdentityConfiguration.IdentityResources)
+            .AddInMemoryApiResources(IdentityConfiguration.ApiResources)
+            .AddInMemoryApiScopes(IdentityConfiguration.ApiScopes)
+            .AddTestUsers(IdentityConfiguration.TestUsers)
+            .AddDeveloperSigningCredential();
+
+            //JWT Bearer https://metanit.com/sharp/aspnet5/23.7.php
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                        options.RequireHttpsMetadata = false;
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            // укзывает, будет ли валидироваться издатель при валидации токена
+                            ValidateIssuer = true,
+                            // строка, представляющая издателя
+                            ValidIssuer = AuthOptions.ISSUER,
+
+                            // будет ли валидироваться потребитель токена
+                            ValidateAudience = true,
+                            // установка потребителя токена
+                            ValidAudience = AuthOptions.AUDIENCE,
+                            // будет ли валидироваться время существования
+                            ValidateLifetime = true,
+
+                            // установка ключа безопасности
+                            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+                            // валидация ключа безопасности
+                            ValidateIssuerSigningKey = true,
+                        };
+                    });
+
             //TODO: add services
             services.AddControllersWithViews();
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<Context>();
-
 
             services.AddScoped<DbContext>();
             services.AddScoped<IAuthService, AuthService>();
@@ -67,7 +103,9 @@ namespace PrintLayer
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseIdentityServer();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
