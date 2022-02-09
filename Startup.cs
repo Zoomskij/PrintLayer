@@ -80,7 +80,6 @@ namespace PrintLayer
             services.AddControllersWithViews();
 
             services.AddScoped<DbContext>();
-            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped(typeof(ICommonService<>), typeof(CommonService<>));
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IOrderService, OrderService>();
