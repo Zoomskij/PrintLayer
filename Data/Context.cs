@@ -19,7 +19,7 @@ namespace PrintLayer.Data
         public Context(DbContextOptions<Context> options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
-            Database.EnsureCreated();
+            Database.Migrate();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
