@@ -2,10 +2,10 @@ version: '3.4'
 
 services:
   db:
-    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    image: "mcr.microsoft.com/mssql/server:2016-latest"
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=1Secure*Password1
+      - SA_PASSWORD=@dmin123
     ports:
       - 1433:1433
 
