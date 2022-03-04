@@ -28,8 +28,4 @@
     <PackageReference Include="System.Security.Claims" Version="4.3.0" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="npm run dev" />
-  </Target>
-
 </Project>
