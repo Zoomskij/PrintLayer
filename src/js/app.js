@@ -13,6 +13,8 @@ import Review from "~/Reviews/components/Root.vue";
 import Order from "~/Orders/components/Root.vue";
 import News from "~/Home/components/News.vue";
 import LoginVue from '~/components/Login.vue';
+import Upload from '~/components/Upload.vue';
+
 import RegistrationVue from '~/components/Registration.vue'
 
 Vue.use(VueRouter);
@@ -24,6 +26,7 @@ Vue.component("print-layer-header", Header);
 Vue.component("print-layer-footer", Footer);
 Vue.component("news", News);
 Vue.component("p-login", LoginVue);
+Vue.component("p-upload", Upload);
 Vue.component("p-registration", RegistrationVue);
 
 function startOnLoad() {

@@ -16,6 +16,8 @@ namespace PrintLayer.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<VotePrint> VotePrints { get; set; }
         public Context(DbContextOptions<Context> options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;

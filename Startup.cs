@@ -48,6 +48,8 @@ namespace PrintLayer
             services.AddScoped(typeof(ICommonService<>), typeof(CommonService<>));
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IImageService, ImageService>();
+            services.AddScoped<IVotePrintService, VotePrintService>();
 
             services.AddScoped<IAuthRepository, AuthRepository>();
             //TODO
