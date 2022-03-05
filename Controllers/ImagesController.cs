@@ -24,5 +24,13 @@ namespace PrintLayer.Controllers
         {
             await _imageService.AddAsync(file);
         }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<Image> Get(Guid id)
+        {
+            var image = await _imageService.FindAsync(id);
+            return image;
+        }
     }
 }
