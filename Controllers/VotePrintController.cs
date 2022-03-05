@@ -1,4 +1,5 @@
-﻿using PrintLayer.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using PrintLayer.Models;
 using PrintLayer.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace PrintLayer.Controllers
 {
-    public class VotePrintController
+    [Route("[controller]")]
+    public class VotePrintController : Controller
     {
         private readonly IVotePrintService _votePrintService;
 
