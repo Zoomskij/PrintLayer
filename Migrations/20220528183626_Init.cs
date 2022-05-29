@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace PrintLayer.Migrations
 {
@@ -81,7 +82,7 @@ namespace PrintLayer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -102,7 +103,7 @@ namespace PrintLayer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -260,17 +261,17 @@ namespace PrintLayer.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "77b6d946-a38c-44d7-8043-b365c65bcc92", 0, "f70c9109-9130-4a5b-822f-0fa261d27558", "admin", true, false, null, null, null, "a322b9c0b8e19ef16d4d308cd4e1222106d0edf8fbb3c8f1649242dff54a740c", null, false, "e32447ab-73f3-4f03-bd01-b89837c89366", false, "Admin Admin" });
+                values: new object[] { "c8e5a649-14f4-428a-87ef-7f8b8c24a030", 0, "7a754759-1df0-4ec7-8d3e-7d8aa53363f2", "admin", true, false, null, null, null, "a322b9c0b8e19ef16d4d308cd4e1222106d0edf8fbb3c8f1649242dff54a740c", null, false, "a1f55514-6b5f-4ef1-87f9-0d43c57580a0", false, "Admin Admin" });
 
             migrationBuilder.InsertData(
                 table: "News",
                 columns: new[] { "Id", "CreatedDate", "Description", "ModifiedDate", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("44b05f8a-fb35-4b64-b0d3-850cdc07e76a"), new DateTime(2022, 3, 5, 13, 51, 31, 298, DateTimeKind.Utc).AddTicks(6446), "This is a test news description 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name 1" },
-                    { new Guid("7031be1f-8c8c-4ec7-98c8-ae24d7eeced6"), new DateTime(2022, 3, 5, 13, 51, 31, 298, DateTimeKind.Utc).AddTicks(7079), "This is a test news description 2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name 2" },
-                    { new Guid("b1f2931b-e49a-440e-8ee6-9dcccb854694"), new DateTime(2022, 3, 5, 13, 51, 31, 298, DateTimeKind.Utc).AddTicks(7127), "This is a test news description 3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name 3" },
-                    { new Guid("8fc8a257-1c57-442c-bb2a-901a03b87ced"), new DateTime(2022, 3, 5, 13, 51, 31, 298, DateTimeKind.Utc).AddTicks(7148), "This is a test news description 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name 4" }
+                    { new Guid("4486341b-de86-487e-8f33-7ed134d63205"), new DateTime(2022, 5, 28, 18, 36, 24, 692, DateTimeKind.Utc).AddTicks(9186), "This is a test news description 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name 1" },
+                    { new Guid("e252f6dc-418d-46ef-a7bb-53d8e0129d71"), new DateTime(2022, 5, 28, 18, 36, 24, 693, DateTimeKind.Utc).AddTicks(564), "This is a test news description 2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name 2" },
+                    { new Guid("f4034489-3f25-411f-a16c-c08162c9ba59"), new DateTime(2022, 5, 28, 18, 36, 24, 693, DateTimeKind.Utc).AddTicks(648), "This is a test news description 3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name 3" },
+                    { new Guid("e3b3892f-64fd-490f-be31-d1f15faf20e7"), new DateTime(2022, 5, 28, 18, 36, 24, 693, DateTimeKind.Utc).AddTicks(683), "This is a test news description 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Test Name 4" }
                 });
 
             migrationBuilder.InsertData(
@@ -278,26 +279,26 @@ namespace PrintLayer.Migrations
                 columns: new[] { "Id", "Address", "CreatedDate", "Description", "ModifiedDate", "Phone", "Status", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("3403ad77-2007-4184-a243-64e37e607f31"), "Moscow Kremlin st 0", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(7873), "Sample Description 0", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("a104d94e-f760-44c5-966e-bf26fc3c44ce"), "Moscow Kremlin st 19", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9871), "Sample Description 19", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("f45e3161-b8d4-462a-a929-126b8c62e7c6"), "Moscow Kremlin st 18", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9851), "Sample Description 18", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("23fa048c-cb12-497f-bd75-3d62c4563801"), "Moscow Kremlin st 17", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9831), "Sample Description 17", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("9f5abb79-8ac1-4416-83d1-08385df87b52"), "Moscow Kremlin st 16", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9809), "Sample Description 16", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("1ed56b1d-2ec5-4763-8736-cb0debeecd9b"), "Moscow Kremlin st 15", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9789), "Sample Description 15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("df31e67b-8745-4a94-9015-c639724d2d5d"), "Moscow Kremlin st 14", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9769), "Sample Description 14", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("abc02c44-a54d-410b-992a-163d957f9641"), "Moscow Kremlin st 13", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9749), "Sample Description 13", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("6e30abe9-3e84-4a74-b012-3d02e10379c1"), "Moscow Kremlin st 12", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9727), "Sample Description 12", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("59de5e72-c199-4fe1-8192-1516b7382ae1"), "Moscow Kremlin st 10", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9686), "Sample Description 10", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("1d55de0a-4ab0-42f4-bd2a-a697833b0a07"), "Moscow Kremlin st 11", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9707), "Sample Description 11", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("68276b69-ff68-4687-a8a0-39b174b038de"), "Moscow Kremlin st 8", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9605), "Sample Description 8", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("25d5f17c-da3d-4e58-80cc-91b7ec201a8b"), "Moscow Kremlin st 7", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9585), "Sample Description 7", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("06c7d58a-cfc2-4d67-9281-7f2467e519d7"), "Moscow Kremlin st 6", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9564), "Sample Description 6", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("f66cfac0-a224-4fe9-9939-59652763af3e"), "Moscow Kremlin st 5", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9543), "Sample Description 5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("0b73eda5-2ad4-4776-8679-e1bfeafe0ad0"), "Moscow Kremlin st 4", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9515), "Sample Description 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("2041a8aa-142d-4137-abe5-55e44ce524e6"), "Moscow Kremlin st 3", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9493), "Sample Description 3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("2c02bc4b-926e-4bba-b678-7da6dca364ed"), "Moscow Kremlin st 2", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9467), "Sample Description 2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("0a55d8c5-10bf-4b46-8f49-bedd9dbdcbb2"), "Moscow Kremlin st 1", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9387), "Sample Description 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" },
-                    { new Guid("c51bdb56-5433-4680-82f5-18a5a0c3a253"), "Moscow Kremlin st 9", new DateTime(2022, 3, 5, 13, 51, 31, 297, DateTimeKind.Utc).AddTicks(9662), "Sample Description 9", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "77b6d946-a38c-44d7-8043-b365c65bcc92" }
+                    { new Guid("4245a898-4606-4b16-9bdc-4095dd269286"), "Moscow Kremlin st 0", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(2760), "Sample Description 0", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("456ba330-8832-4a8f-970d-ffb027c138c8"), "Moscow Kremlin st 19", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6405), "Sample Description 19", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("c81a82da-b89c-4994-ae9f-188b7e13a234"), "Moscow Kremlin st 18", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6373), "Sample Description 18", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("9853d08f-3d1e-4eb1-9f7b-98a287ff4472"), "Moscow Kremlin st 17", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6340), "Sample Description 17", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("1860991a-eab0-4328-b18b-8f6cdef51465"), "Moscow Kremlin st 16", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6305), "Sample Description 16", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("0522a2c2-3aae-4239-be65-aac569bfa516"), "Moscow Kremlin st 15", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6272), "Sample Description 15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("5dbaf0c2-1d05-4d09-905f-ded31addf7a8"), "Moscow Kremlin st 14", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6239), "Sample Description 14", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("73c712fb-9734-4d38-a966-59e54d3b2aaf"), "Moscow Kremlin st 13", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6205), "Sample Description 13", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("0b3ca4f8-e81e-4cf2-bc26-5600340ef9d6"), "Moscow Kremlin st 12", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6168), "Sample Description 12", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("a1117317-7508-4a65-95c1-c7c9d9f3f0c5"), "Moscow Kremlin st 10", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6098), "Sample Description 10", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("d4713f2d-51ec-463e-8415-75b5e38f4405"), "Moscow Kremlin st 11", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(6135), "Sample Description 11", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("6edec01d-2663-436d-94cc-a56fb85ac99d"), "Moscow Kremlin st 8", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5947), "Sample Description 8", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("143af7e7-0125-496d-85b8-7328491a2852"), "Moscow Kremlin st 7", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5914), "Sample Description 7", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("332fa908-8fc2-41c7-a238-26d32a6516e5"), "Moscow Kremlin st 6", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5881), "Sample Description 6", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("764d37c3-dd4e-42dd-8068-e22fb53046f5"), "Moscow Kremlin st 5", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5847), "Sample Description 5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("2c6038f1-9171-4755-b17c-176a9aa1b49b"), "Moscow Kremlin st 4", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5799), "Sample Description 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("38b4404c-3978-4fcd-8e88-c785707c2b95"), "Moscow Kremlin st 3", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5764), "Sample Description 3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("15d547ac-0386-4da3-98ff-d2e8528bee4e"), "Moscow Kremlin st 2", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5722), "Sample Description 2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("168615cf-78ed-4659-bdee-377ac58b444d"), "Moscow Kremlin st 1", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5572), "Sample Description 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" },
+                    { new Guid("f415768e-9197-47bf-9af8-06fb2af6eb27"), "Moscow Kremlin st 9", new DateTime(2022, 5, 28, 18, 36, 24, 691, DateTimeKind.Utc).AddTicks(5982), "Sample Description 9", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "+71234567890", 1, "c8e5a649-14f4-428a-87ef-7f8b8c24a030" }
                 });
 
             migrationBuilder.InsertData(
@@ -305,10 +306,10 @@ namespace PrintLayer.Migrations
                 columns: new[] { "Id", "CreatedDate", "Description", "Grade", "ModifiedDate", "UserId", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("69877762-9942-464e-a1eb-6e6b7123c8eb"), new DateTime(2022, 3, 5, 13, 51, 31, 298, DateTimeKind.Utc).AddTicks(3769), "Sample review Description 3", (byte)3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "77b6d946-a38c-44d7-8043-b365c65bcc92", "Admin Admin" },
-                    { new Guid("97418bb2-1365-4de4-ad55-2ca40e0fbc36"), new DateTime(2022, 3, 5, 13, 51, 31, 298, DateTimeKind.Utc).AddTicks(2445), "Sample review Description 1", (byte)1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "77b6d946-a38c-44d7-8043-b365c65bcc92", "Admin Admin" },
-                    { new Guid("aa4e55ac-bd36-45f1-acea-8da13292bccf"), new DateTime(2022, 3, 5, 13, 51, 31, 298, DateTimeKind.Utc).AddTicks(3652), "Sample review Description 2", (byte)2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "77b6d946-a38c-44d7-8043-b365c65bcc92", "Admin Admin" },
-                    { new Guid("3ed3eab0-819e-42fd-b11a-b8d6721a5f9d"), new DateTime(2022, 3, 5, 13, 51, 31, 298, DateTimeKind.Utc).AddTicks(3795), "Sample review Description 4", (byte)4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "77b6d946-a38c-44d7-8043-b365c65bcc92", "Admin Admin" }
+                    { new Guid("54a0b596-28b1-4659-8f76-492713f03d4f"), new DateTime(2022, 5, 28, 18, 36, 24, 692, DateTimeKind.Utc).AddTicks(4115), "Sample review Description 3", (byte)3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "c8e5a649-14f4-428a-87ef-7f8b8c24a030", "Admin Admin" },
+                    { new Guid("dac50ffa-9203-4443-9134-ffff61153ed3"), new DateTime(2022, 5, 28, 18, 36, 24, 692, DateTimeKind.Utc).AddTicks(1513), "Sample review Description 1", (byte)1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "c8e5a649-14f4-428a-87ef-7f8b8c24a030", "Admin Admin" },
+                    { new Guid("cb7dac40-057a-4053-9fbe-6db97ce2787a"), new DateTime(2022, 5, 28, 18, 36, 24, 692, DateTimeKind.Utc).AddTicks(3904), "Sample review Description 2", (byte)2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "c8e5a649-14f4-428a-87ef-7f8b8c24a030", "Admin Admin" },
+                    { new Guid("31edd7a1-e91a-49ed-9a2f-1e0c089a7ca7"), new DateTime(2022, 5, 28, 18, 36, 24, 692, DateTimeKind.Utc).AddTicks(4156), "Sample review Description 4", (byte)4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), "c8e5a649-14f4-428a-87ef-7f8b8c24a030", "Admin Admin" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -320,8 +321,7 @@ namespace PrintLayer.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -347,8 +347,7 @@ namespace PrintLayer.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
