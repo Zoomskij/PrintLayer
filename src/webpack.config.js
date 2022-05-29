@@ -6,9 +6,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports = {
     devtool: 'source-map',
     entry: {
-        app_index: './src/js/app.js',
-        reviews_index: ['./src/js/Reviews/index.js'],
-        orders_index: ['./src/js/Orders/index.js'],
+        app_index: './Front/js/app.js',
+        reviews_index: ['./Front/js/Reviews/index.js'],
+        orders_index: ['./Front/js/Orders/index.js'],
     },
     output: {
         // The name under which the editor will be exported.
@@ -20,7 +20,7 @@ module.exports = {
         extensions: ['*', '.js', '.scss'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            "~": path.resolve(__dirname, './src/js/')
+            "~": path.resolve(__dirname, './Front/js/')
         }
     },
     module: {

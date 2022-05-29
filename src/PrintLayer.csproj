@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="src\js\app.js" />
+    <Compile Remove="src\**" />
+    <Content Remove="src\**" />
+    <EmbeddedResource Remove="src\**" />
+    <None Remove="src\**" />
   </ItemGroup>
 
   <ItemGroup>
