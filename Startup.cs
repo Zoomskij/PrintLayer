@@ -35,7 +35,7 @@ namespace PrintLayer
             var connection = _configuration.GetConnectionString("DefaultConnection");
             services.AddMvc();
             services.AddDbContext<Context>(options =>
-                options.UseSqlServer(connection));
+                options.UseNpgsql(connection));
 
             //TODO: add services
             services.AddControllersWithViews();

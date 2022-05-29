@@ -12,7 +12,7 @@ namespace PrintLayer.Data
         private readonly IConfiguration _configuration;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder
-                .UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
+                .UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
         public DbSet<Order> Orders { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<News> News { get; set; }
