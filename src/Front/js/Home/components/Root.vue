@@ -1,7 +1,7 @@
 ﻿<template>
     <div>
-        <!--<span>Home</span>
-        <news></news>-->
+        <span>Home</span>
+        <news></news>
         <p-upload></p-upload>
     </div>
 </template>
