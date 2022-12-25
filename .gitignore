@@ -349,6 +349,9 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /wwwroot/dist
+/wwwroot/dist/*
+/src/wwwroot/dist
+/src/wwwroot/dist/*
 /package-lock.json
 
 # Backup files
